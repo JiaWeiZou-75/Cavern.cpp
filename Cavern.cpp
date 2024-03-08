@@ -16,11 +16,11 @@ Cavern<Creature>::Cavern() {
     tame_Count_ = 0;
 }
 
-bool Cavern<Creature>::enterCavern(const Creature& aCreature) {
-    if (!contains(aCreature)) {
-    if (add(aCreature)) {
-        level_sum_ += aCreature.getLevel();
-        if (aCreature.isTame()) {
+bool Cavern<Creature>::enterCavern(const Creature& enCav) {
+    if (!contains(enCav)) {
+    if (add(enCav)) {
+        level_sum_ += enCav.getLevel();
+        if (enCav.isTame()) {
             tame_count_++;
         }
         return true;
