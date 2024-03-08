@@ -1,13 +1,16 @@
-
+/*
+Name: JiaWei Zou
+Date: 3/7/23
+Cavern.hpp 
+*/
 #ifndef CAVERN_HPP
 #define CAVERN_HPP
-#include "ArrayBag.hpp"
 #include "Creature.hpp"
+#include "ArrayBag.hpp"
+#include <cmath>
 
-template <class Creature>
 
 class Cavern : public ArrayBag<Creature> {
-
     public:
 /**
   Default constructor.
@@ -23,7 +26,7 @@ class Cavern : public ArrayBag<Creature> {
             :   Hint: Use the above definition of equality will help determine if a Creature is already in the Cavern
 **/
 
-    bool enterCavern(const Creature& enCav);
+    bool enterCavern(const Creature& aCreature);
 
 /** 
   * @param   :   A  reference to a Creature leaving the Cavern
@@ -32,7 +35,7 @@ class Cavern : public ArrayBag<Creature> {
                   If the Creature is tame it also updates the tame count.
 **/
 
-    bool exitCavern(const Creature& exCav);
+    bool exitCavern(const Creature& aCreature);
 
  /** 
   * @return   :  The integer level count of all the creatures currently in the Cavern
@@ -68,7 +71,7 @@ class Cavern : public ArrayBag<Creature> {
                   NOTE: no pre-processing of the input string necessary, only uppercase input will match.
     **/
 
-    int tallyCategory(const std::string& tallycategory);
+    int tallyCategory(const std::string& category);
 
 /**
     @param  :   An integer representing the level threshold of the creatures to be removed from the Cavern, with default value 0
@@ -76,7 +79,7 @@ class Cavern : public ArrayBag<Creature> {
     @return :   The number of creatures removed from the Cavern
 */
 
-    int releaseCreaturesBelowLevel(const int level = 0);
+    int releaseCreaturesBelowLevel(const int level);
 
 /**
     @param  : A reference to a string representing a creature Category with a value in ["UNKNOWN", "UNDEAD", "MYSTICAL", "ALIEN"], or default value "ALL" if no category is given
@@ -85,7 +88,7 @@ class Cavern : public ArrayBag<Creature> {
               NOTE: no pre-processing of the input string necessary, only uppercase input will match. If the input string does not match one of the expected category values, do not remove any creatures.
 */
 
-    int releaseCreaturesOfCategory(const std::string& category = "ALL");
+    int releaseCreaturesOfCategory(const std::string& category);
 
 /**
   * @post    : Outputs a report of the creatures currently in the Cavern in the form:
@@ -110,8 +113,8 @@ class Cavern : public ArrayBag<Creature> {
 */
 
 private:
-    int level_Sum_;
-    int tame_Count_;
+    int level_sum_;
+    int tame_count_;
 };
 #include "Cavern.cpp"
 #endif
