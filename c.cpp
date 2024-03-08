@@ -1,3 +1,9 @@
+/*
+Name: JiaWei Zou
+Date: 3/7/23
+Cavern.cpp defines the constructors and private and public function implementation of the Cavern class
+*/
+
 #include "Cavern.hpp"
 #include <cmath>
 
@@ -5,7 +11,7 @@
   Default constructor.
   Default-initializes all private members. 
 */
-Cavern::Cavern(){
+Cavern::Cavern() {
     level_sum_ = 0;
     tame_count_ = 0;
 }
@@ -18,13 +24,13 @@ Cavern::Cavern(){
 
 */
 
-bool Cavern::enterCavern(const Creature& creature){
-    if (contains(creature)){
+bool Cavern::enterCavern(const Creature& aCreature){
+    if (contains(aCreature)){
         return false; 
     } else {
-        if (add(creature)){
-            level_sum_ += creature.getLevel();
-        if (creature.isTame()){
+        if (add(aCreature)){
+            level_sum_ += aCreature.getLevel();
+        if (aCreature.isTame()){
             tame_count_ += 1;
         }
             return true;
@@ -40,12 +46,12 @@ bool Cavern::enterCavern(const Creature& creature){
     @post    :  removes the creature from the Cavern and updates the level sum. 
                 If the Creature is tame it also updates the tame count.
 */
-bool Cavern::exitCavern(const Creature& creature){
-    int lvl = creature.getLevel();
-    bool is_Tame = creature.isTame();
+bool Cavern::exitCavern(const Creature& aCreature){
+    int level = aCreature.getLevel();
+    bool is_Tame = aCreature.isTame();
 
-    if (remove(creature)){
-        level_sum_ = level_sum_ - lvl;
+    if (remove(aCreature)){
+        level_sum_ = level_sum_ - level;
         if (is_Tame){
         tame_count_ = tame_count_ - 1;
         }
@@ -70,9 +76,9 @@ int Cavern::calculateAvgLevel() const{
     if (isEmpty()){
         return 0;
     } else{
-        float total_lvls = this->getLevelSum();
+        float total_levels = this->getLevelSum();
         float size = this->getCurrentSize();
-        int ans = round(total_lvls / size);
+        int ans = round(total_levels / size);
         return ans;
     }
 }
